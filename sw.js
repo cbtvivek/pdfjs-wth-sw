@@ -4,10 +4,6 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(cacheName).then(function(cache) {
       return cache.addAll([
-        '/pdfjs-wth-sw/',
-        '/pdfjs-wth-sw/web/',
-        '/pdfjs-wth-sw/build/',
-        '/pdfjs-wth-sw/web/images/',
         '/pdfjs-wth-sw/web/viewer.html',
         '/pdfjs-wth-sw/web/viewer.js',
         '/pdfjs-wth-sw/web/viewer.css',
