@@ -14901,7 +14901,7 @@ _app.PDFPrintServiceFactory.instance = {
 
 // Register Service Worker
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/pdfjs-wth-sw/web/sw.js', { scope: '/pdfjs-wth-sw/web/' }).then(function (reg) {
+  navigator.serviceWorker.register('/pdfjs-wth-sw/web/sw.js', { scope: '/pdfjs-wth-sw/' }).then(function (reg) {
     if (reg.installing) {
       console.log('Service worker installing');
     } else if (reg.waiting) {
