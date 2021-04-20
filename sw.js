@@ -1,4 +1,4 @@
-const cacheName = 'v1.0.1';
+const cacheName = 'v1.0.2';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
@@ -30,4 +30,17 @@ self.addEventListener('fetch', function(event) {
       });
     }
   }));
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+        // Delete all caches except current one
+        if (cacheName !== key) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
 });
