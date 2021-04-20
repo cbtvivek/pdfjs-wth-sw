@@ -2739,13 +2739,13 @@ function webViewerInitialized() {
     }
   }, true);
 
-  try {
-    webViewerOpenFileViaURL(file);
-  } catch (reason) {
-    PDFViewerApplication.l10n.get("loading_error", null, "An error occurred while loading the PDF.").then(msg => {
-      PDFViewerApplication.error(msg, reason);
-    });
-  }
+  // try {
+  //   webViewerOpenFileViaURL(file);
+  // } catch (reason) {
+  //   PDFViewerApplication.l10n.get("loading_error", null, "An error occurred while loading the PDF.").then(msg => {
+  //     PDFViewerApplication.error(msg, reason);
+  //   });
+  // }
 }
 
 let webViewerOpenFileViaURL;
