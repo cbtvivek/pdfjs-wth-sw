@@ -238,7 +238,7 @@ const defaultOptions = {
     kind: OptionKind.VIEWER + OptionKind.PREFERENCE
   },
   defaultUrl: {
-    value: "https://raw.githubusercontent.com/mozilla/pdf.js/master/web/compressed.tracemonkey-pldi-09.pdf",
+    value: "",
     kind: OptionKind.VIEWER
   },
   defaultZoomValue: {
@@ -14913,13 +14913,18 @@ _app.PDFPrintServiceFactory.instance = {
 ;
 //# sourceMappingURL=viewer.js.map
 
-    function loadTestFile() {
-        PDFViewerApplication.findController.executeCommand('find', {
-            query: 'Dynamic',
-            phraseSearch: true,
-            caseSensitive: false,
-            entireWord: false,
-            highlightAll: true,
-            findPrevious: false
-          });
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/pdfjs-wth-sw/sw.js', { scope: '/pdfjs-wth-sw/' }).then(function (reg) {
+    if (reg.installing) {
+      console.log('Service worker installing');
+    } else if (reg.waiting) {
+      console.log('Service worker installed');
+    } else if (reg.active) {
+      console.log('Service worker active');
     }
+  }).catch(function (error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+  });
+}
